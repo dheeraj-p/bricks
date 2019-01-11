@@ -1,0 +1,16 @@
+main {
+  position: relative;
+  width: 960px;
+  height: 680px;
+  border: 2px solid black;
+  margin: 0 auto;
+}
+
+.paddle {
+  position: absolute;
+  bottom: 10px;
+  left: 430px;
+  height: 20px;
+  width: 100px;
+  background: black;
+}
