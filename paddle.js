@@ -21,4 +21,12 @@ class Paddle {
   getLeft() {
     return this.left;
   }
+
+  moveLeft() {
+    this.left = this.left - 10;
+  }
+
+  moveRight() {
+    this.left = this.left + 10;
+  }
 }
