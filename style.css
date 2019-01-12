@@ -8,9 +8,5 @@ main {
 
 .paddle {
   position: absolute;
-  bottom: 10px;
-  left: 430px;
-  height: 20px;
-  width: 100px;
   background: black;
 }
