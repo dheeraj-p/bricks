@@ -1,9 +1,9 @@
 class Paddle {
-  constructor(height, width, bottom, left) {
+  constructor(height, width, x, y) {
     this.height = height;
     this.width = width;
-    this.bottom = bottom;
-    this.left = left;
+    this.x = x;
+    this.y = y;
   }
 
   getHeight() {
@@ -14,19 +14,19 @@ class Paddle {
     return this.width;
   }
 
-  getBottom() {
-    return this.bottom;
+  getX() {
+    return this.x;
   }
 
-  getLeft() {
-    return this.left;
+  getY() {
+    return this.y;
   }
 
   moveLeft() {
-    this.left = this.left - 10;
+    this.x = this.x - 10;
   }
 
   moveRight() {
-    this.left = this.left + 10;
+    this.x = this.x + 10;
   }
 }

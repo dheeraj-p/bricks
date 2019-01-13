@@ -1,8 +1,8 @@
 class Ball {
-  constructor(radius, bottom, left, initialVelocity) {
+  constructor(radius, x, y, initialVelocity) {
     this.radius = radius;
-    this.bottom = bottom;
-    this.left = left;
+    this.x = x;
+    this.y = y;
     this.velocity = initialVelocity;
   }
 
@@ -11,19 +11,19 @@ class Ball {
   }
 
   move() {
-    this.bottom += this.velocity.getVerticalComponent();
-    this.left += this.velocity.getHorizontalComponent();
+    this.x += this.velocity.getHorizontalComponent();
+    this.y += this.velocity.getVerticalComponent();
   }
 
   getRadius() {
     return this.radius;
   }
 
-  getBottom() {
-    return this.bottom;
+  getX() {
+    return this.x;
   }
 
-  getLeft() {
-    return this.left;
+  getY() {
+    return this.y;
   }
 }

@@ -41,14 +41,14 @@ const drawPaddle = function(document, paddle) {
   const paddleView = getPaddleView(document);
   paddleView.style.width = toPixels(paddle.getWidth());
   paddleView.style.height = toPixels(paddle.getHeight());
-  paddleView.style.bottom = toPixels(paddle.getBottom());
-  paddleView.style.left = toPixels(paddle.getLeft());
+  paddleView.style.bottom = toPixels(paddle.getY());
+  paddleView.style.left = toPixels(paddle.getX());
 };
 
 const createPaddle = function(document) {
   const gameWindow = getGameWindow(document);
   const paddleView = document.createElement('div');
-  const paddle = new Paddle(20, 100, 10, 430);
+  const paddle = new Paddle(20, 100, 430, 10);
   paddleView.className = 'paddle';
   paddleView.id = 'paddle_1';
   gameWindow.appendChild(paddleView);
@@ -60,15 +60,15 @@ const drawBall = function(document, ball) {
   const ballView = getBallView(document);
   ballView.style.width = toPixels(ball.getRadius());
   ballView.style.height = toPixels(ball.getRadius());
-  ballView.style.bottom = toPixels(ball.getBottom());
-  ballView.style.left = toPixels(ball.getLeft());
+  ballView.style.bottom = toPixels(ball.getY());
+  ballView.style.left = toPixels(ball.getX());
 };
 
 const createBall = function(document) {
   const gameWindow = getGameWindow(document);
   const ballView = document.createElement('div');
   const ballVelocity = new Velocity(2, 135);
-  const ball = new Ball(30, 40, 430, ballVelocity);
+  const ball = new Ball(30, 430, 40, ballVelocity);
   ballView.className = 'ball';
   ballView.id = 'ball_1';
   gameWindow.appendChild(ballView);
