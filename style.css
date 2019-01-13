@@ -1,7 +1,5 @@
 main {
   position: relative;
-  width: 960px;
-  height: 680px;
   border: 2px solid black;
   margin: 0 auto;
 }

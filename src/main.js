@@ -1,5 +1,7 @@
 const KEY_ARROW_RIGHT = 'ArrowRight';
 const KEY_ARROW_LEFT = 'ArrowLeft';
+const GAME_WINDOW_WIDTH = 960;
+const GAME_WINDOW_HEIGHT = 680;
 
 const toPixels = function(value) {
   return `${value}px`;
@@ -50,9 +52,16 @@ const createPaddle = function(document) {
   return paddle;
 };
 
+const createGame = function(height, width) {
+  const gameWindow = getGameWindow(document);
+  gameWindow.style.width = toPixels(width);
+  gameWindow.style.height = toPixels(height);
+  gameWindow.focus();
+};
+
 const intializeGame = function() {
+  createGame(GAME_WINDOW_HEIGHT, GAME_WINDOW_WIDTH);
   const paddle = createPaddle(document);
-  getGameWindow(document).focus();
   setEventListeners(document, paddle);
 };
 
