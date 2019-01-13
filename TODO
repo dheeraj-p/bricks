@@ -1,3 +1,2 @@
-TODO: Make ball move (Moving ball continously is the responsibility of controller).
 TODO: Detect collisions of ball with boundaries of gameWindow.
 TODO: Don't let the paddle move outside the boundaries of game window.
