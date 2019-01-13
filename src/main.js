@@ -67,12 +67,18 @@ const drawBall = function(document, ball) {
 const createBall = function(document) {
   const gameWindow = getGameWindow(document);
   const ballView = document.createElement('div');
-  const ball = new Ball(30, 40, 430);
+  const ballVelocity = new Velocity(2, 135);
+  const ball = new Ball(30, 40, 430, ballVelocity);
   ballView.className = 'ball';
   ballView.id = 'ball_1';
   gameWindow.appendChild(ballView);
   drawBall(document, ball);
   return ball;
+};
+
+const moveBall = function(game) {
+  game.moveBall();
+  drawBall(document, game.getBall());
 };
 
 const createGame = function(height, width) {
@@ -89,6 +95,7 @@ const createGame = function(height, width) {
 const intializeGame = function() {
   const game = createGame(GAME_WINDOW_HEIGHT, GAME_WINDOW_WIDTH);
   setEventListeners(document, game);
+  setInterval(() => moveBall(game), 10);
 };
 
 window.onload = intializeGame;

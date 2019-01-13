@@ -14,6 +14,14 @@ class Game {
     this.paddle.moveLeft();
   }
 
+  moveBall() {
+    this.ball.move();
+  }
+
+  getBall() {
+    return this.ball;
+  }
+
   getPaddle() {
     return this.paddle;
   }
