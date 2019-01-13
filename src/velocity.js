@@ -11,7 +11,9 @@ class Velocity {
   }
 
   getHorizontalComponent() {
-    return this.getSpeed() * Math.cos(toRadian(this.getDirection()));
+    return (
+      this.getSpeed() * Math.sin(toRadian(90) - toRadian(this.getDirection()))
+    );
   }
 
   getVerticalComponent() {
