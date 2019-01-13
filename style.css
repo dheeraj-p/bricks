@@ -8,3 +8,9 @@ main {
   position: absolute;
   background: black;
 }
+
+.ball {
+  position: absolute;
+  background: red;
+  border-radius: 50%;
+}

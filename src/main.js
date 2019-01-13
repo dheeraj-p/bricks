@@ -11,25 +11,29 @@ const getPaddleView = function(document) {
   return document.getElementById('paddle_1');
 };
 
+const getBallView = function(document) {
+  return document.getElementById('ball_1');
+};
+
 const getGameWindow = function(document) {
   return document.getElementById('game-window');
 };
 
-const keyDownEventListener = function(document, paddle) {
+const keyDownEventListener = function(document, game) {
   if (event.key == KEY_ARROW_RIGHT) {
-    paddle.moveRight();
+    game.movePaddleRight();
   }
   if (event.key == KEY_ARROW_LEFT) {
-    paddle.moveLeft();
+    game.movePaddleLeft();
   }
-  drawPaddle(document, paddle);
+  drawPaddle(document, game.getPaddle());
 };
 
-const setEventListeners = function(document, paddle) {
+const setEventListeners = function(document, game) {
   getGameWindow(document).onkeydown = keyDownEventListener.bind(
     null,
     document,
-    paddle
+    game
   );
 };
 
@@ -52,17 +56,39 @@ const createPaddle = function(document) {
   return paddle;
 };
 
+const drawBall = function(document, ball) {
+  const ballView = getBallView(document);
+  ballView.style.width = toPixels(ball.getRadius());
+  ballView.style.height = toPixels(ball.getRadius());
+  ballView.style.bottom = toPixels(ball.getBottom());
+  ballView.style.left = toPixels(ball.getLeft());
+};
+
+const createBall = function(document) {
+  const gameWindow = getGameWindow(document);
+  const ballView = document.createElement('div');
+  const ball = new Ball(30, 40, 430);
+  ballView.className = 'ball';
+  ballView.id = 'ball_1';
+  gameWindow.appendChild(ballView);
+  drawBall(document, ball);
+  return ball;
+};
+
 const createGame = function(height, width) {
+  const paddle = createPaddle(document);
+  const ball = createBall(document);
+  const game = new Game(height, width, paddle, ball);
   const gameWindow = getGameWindow(document);
   gameWindow.style.width = toPixels(width);
   gameWindow.style.height = toPixels(height);
   gameWindow.focus();
+  return game;
 };
 
 const intializeGame = function() {
-  createGame(GAME_WINDOW_HEIGHT, GAME_WINDOW_WIDTH);
-  const paddle = createPaddle(document);
-  setEventListeners(document, paddle);
+  const game = createGame(GAME_WINDOW_HEIGHT, GAME_WINDOW_WIDTH);
+  setEventListeners(document, game);
 };
 
 window.onload = intializeGame;
