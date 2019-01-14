@@ -1,3 +1,4 @@
+TODO: Use wrap positions game elements in `Position` object.
 FIXME: Detect collisions of ball with boundaries of gameWindow.
 TODO: Create wall object.
 TODO: Don't let the paddle move outside the boundaries of game window.
