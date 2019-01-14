@@ -39,16 +39,18 @@ const setEventListeners = function(document, game) {
 
 const drawPaddle = function(document, paddle) {
   const paddleView = getPaddleView(document);
+  const position = paddle.getPosition();
   paddleView.style.width = toPixels(paddle.getWidth());
   paddleView.style.height = toPixels(paddle.getHeight());
-  paddleView.style.bottom = toPixels(paddle.getY());
-  paddleView.style.left = toPixels(paddle.getX());
+  paddleView.style.bottom = toPixels(position.getY());
+  paddleView.style.left = toPixels(position.getX());
 };
 
 const createPaddle = function(document) {
   const gameWindow = getGameWindow(document);
   const paddleView = document.createElement('div');
-  const paddle = new Paddle(20, 100, 430, 10);
+  const position = new Position(430, 10);
+  const paddle = new Paddle(20, 100, position);
   paddleView.className = 'paddle';
   paddleView.id = 'paddle_1';
   gameWindow.appendChild(paddleView);
@@ -79,7 +81,6 @@ const createBall = function(document) {
 };
 
 const moveBall = function(game) {
-  // game.updateBallStatus();
   game.moveBall();
   drawBall(document, game.getBall());
 };
