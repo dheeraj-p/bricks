@@ -58,17 +58,19 @@ const createPaddle = function(document) {
 
 const drawBall = function(document, ball) {
   const ballView = getBallView(document);
+  const position = ball.getPosition();
   ballView.style.width = toPixels(ball.getRadius());
   ballView.style.height = toPixels(ball.getRadius());
-  ballView.style.bottom = toPixels(ball.getY());
-  ballView.style.left = toPixels(ball.getX());
+  ballView.style.bottom = toPixels(position.getY());
+  ballView.style.left = toPixels(position.getX());
 };
 
 const createBall = function(document) {
   const gameWindow = getGameWindow(document);
   const ballView = document.createElement('div');
   const ballVelocity = new Velocity(2, 135);
-  const ball = new Ball(30, 430, 40, ballVelocity);
+  const position = new Position(430, 40);
+  const ball = new Ball(30, position, ballVelocity);
   ballView.className = 'ball';
   ballView.id = 'ball_1';
   gameWindow.appendChild(ballView);
@@ -77,25 +79,30 @@ const createBall = function(document) {
 };
 
 const moveBall = function(game) {
+  // game.updateBallStatus();
   game.moveBall();
   drawBall(document, game.getBall());
+};
+
+const initializeGameWindow = function(document, width, height) {
+  const gameWindow = getGameWindow(document);
+  gameWindow.style.width = toPixels(width);
+  gameWindow.style.height = toPixels(height);
+  gameWindow.focus();
 };
 
 const createGame = function(height, width) {
   const paddle = createPaddle(document);
   const ball = createBall(document);
   const game = new Game(height, width, paddle, ball);
-  const gameWindow = getGameWindow(document);
-  gameWindow.style.width = toPixels(width);
-  gameWindow.style.height = toPixels(height);
-  gameWindow.focus();
+  initializeGameWindow(document, width, height);
   return game;
 };
 
 const intializeGame = function() {
   const game = createGame(GAME_WINDOW_HEIGHT, GAME_WINDOW_WIDTH);
   setEventListeners(document, game);
-  setInterval(() => moveBall(game), 10);
+  setInterval(() => moveBall(game), 5);
 };
 
 window.onload = intializeGame;

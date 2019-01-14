@@ -20,6 +20,14 @@ class Velocity {
     return this.getSpeed() * Math.sin(toRadian(this.getDirection()));
   }
 
+  negateHorizontalComponent() {
+    this.setDirection(this.getDirection() + 90);
+  }
+
+  negateVerticalComponent() {
+    this.setDirection(this.getDirection() - 90);
+  }
+
   getDirection() {
     return this.direction;
   }
